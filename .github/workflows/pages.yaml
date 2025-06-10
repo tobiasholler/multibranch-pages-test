@@ -28,5 +28,5 @@ jobs:
           github_token: ${{ github.token }}
           publish_dir: public
           publish_branch: gh-pages
-          keep_files: true
+          # keep_files: true
           destination_dir: ${{ github.ref_name }}
