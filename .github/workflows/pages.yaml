@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  pages:
+  build:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -29,3 +29,4 @@ jobs:
           publish_dir: public
           publish_branch: gh-pages
           keep_files: true
+          destination_dir: ${{ github.ref_name }}
