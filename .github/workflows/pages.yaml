@@ -11,14 +11,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create public directory
-        run: mkdir public
+        run: 'mkdir public'
 
       - name: Get current commit SHA
         id: commit_sha
-        run: echo "::set-output name=sha::${{ github.sha }}"
+        run: 'echo "::set-output name=sha::${{ github.sha }}"'
 
       - name: Write commit SHA to index.html
-        run: echo "Commit SHA: ${{ steps.commit_sha.outputs.sha }}" > public/index.html
+        run: 'echo "Commit SHA: ${{ steps.commit_sha.outputs.sha }}" > public/index.html'
 
       - name: Deploy Page
         uses: peaceiris/actions-gh-pages@v3
