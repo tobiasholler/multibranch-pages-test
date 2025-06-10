@@ -1,0 +1,29 @@
+name: pages
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create public directory
+        run: mkdir public
+
+      - name: Get current commit SHA
+        id: commit_sha
+        run: echo "::set-output name=sha::${{ github.sha }}"
+
+      - name: Write commit SHA to index.html
+        run: echo "Commit SHA: ${{ steps.commit_sha.outputs.sha }}" > public/index.html
+
+      - name: Deploy Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: public
+          publish_branch: ${{ github.ref_name }}
+          keep_files: true
